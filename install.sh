@@ -1,6 +1,5 @@
-#! /usr/bin/env bash
-
-THEME='lenovo-grub-theme'
+#!/bin/bash
+THEME='lenovo-grub-theme-4k'
 
 # Pre-authorise sudo
 sudo echo
@@ -9,7 +8,7 @@ GRUB_DIR='grub'
 UPDATE_GRUB='update-grub'
 
 echo 'Fetching theme archive'
-wget https://github.com/ds1david/${THEME}/archive/master.zip
+wget https://github.com/yfiua/${THEME}/archive/master.zip
 
 echo 'Unpacking theme'
 unzip master.zip
@@ -28,7 +27,7 @@ sudo sed -i 's/^\(GRUB_TERMINAL\w*=.*\)/#\1/' /etc/default/grub
 
 echo 'Removing empty lines at the end of GRUB config' # optional
 sudo sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' /etc/default/grub
-udo
+
 echo 'Adding new line to GRUB config just in case' # optional
 echo | sudo tee -a /etc/default/grub
 
@@ -37,15 +36,6 @@ echo "GRUB_THEME=/boot/${GRUB_DIR}/themes/${THEME}/theme.txt" | sudo tee -a /etc
 
 echo 'Removing theme installation files'
 rm -rf master.zip ${THEME}-master
-
-if [ -e /usr/share/plymouth/themes/default.grub ]; then
-    echo 'Removing blink purple screen'
-    sudo cat << '    EOF' >> /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
-    if background_color 0,0,0; then
-      clear
-    fi
-    EOF
-fi
 
 echo 'Updating GRUB'
 eval sudo "$UPDATE_GRUB"
