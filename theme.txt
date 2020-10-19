@@ -2,7 +2,7 @@
 title-text: ""
 desktop-image: "background.png"
 desktop-color: "#000000"
-terminal-font: "Unifont Regular 18"
+terminal-font: "Liberation Mono Regular 36"
 terminal-box: "terminal_box_*.png"
 terminal-left: "0"
 terminal-top: "0"
@@ -12,37 +12,41 @@ terminal-border: "0"
 
 # Boot menu
 + boot_menu {
-  left = 25%
+  left = 35%
   top = 60%
-  width = 50%
+  width = 30%
   height = 40%
-  item_font = "Unifont Regular 18"
+  item_font = "Liberation Mono Regular 36"
   item_color = "#777777"
   selected_item_color = "#999999"
-  item_height = 40
-  item_spacing = 4
+  item_height = 60
+  item_spacing = 8
   item_pixmap_style = "item_*.png"
+  item_icon_space = 16
   selected_item_pixmap_style = "selected_item_*.png"
+  icon_width = 36
+  icon_height = 36
 }
 
 # Countdown message
 + label {
   left = 0
-  top = 100%-48
+  top = 100%-160
   width = 100%
   align = "center"
   id = "__timeout__"
   text = "Booting in %d seconds"
-  font = "Unifont Regular 18"
+  color = "#777777"
+  font = "Liberation Mono Regular 36"
 }
 
 # Navigation keys hint 
 + label {
   left = 0
-  top = 100%-24
+  top = 100%-96
   width = 100%
   align = "center"
   text = "Use ↑ and ↓ keys to change selection, Enter to confirm"
   color = "#777777"
-  font = "Unifont Regular 18"
+  font = "Liberation Mono Regular 36"
 }
